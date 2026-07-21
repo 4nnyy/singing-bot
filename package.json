@@ -12,7 +12,7 @@
     "discord.js": "^14.16.3",
     "discord-player": "^7.2.0",
     "@discord-player/extractor": "^7.2.0",
-    "discord-player-youtubei": "^2.0.0",
+    "discord-player-youtubei": "latest",
     "mediaplex": "latest",
     "sodium-native": "latest",
     "ffmpeg-static": "^5.2.0",
