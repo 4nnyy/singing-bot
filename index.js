@@ -89,3 +89,11 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 client.login(process.env.DISCORD_TOKEN);
+
+// ---------- Dummy web server (Render ke liye zaroori) ----------
+const express = require('express');
+const app = express();
+app.get('/', (req, res) => res.send('AnnySing bot chal raha hai! 🎶'));
+app.listen(process.env.PORT || 3000, () => {
+  console.log('✅ Web server bhi chal raha hai, Render khush hai.');
+});
