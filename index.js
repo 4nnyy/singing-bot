@@ -7,6 +7,8 @@ const {
   Collection,
   EmbedBuilder,
   ActivityType,
+  REST,
+  Routes,
 } = require('discord.js');
 const { Player } = require('discord-player');
 const { YoutubeiExtractor } = require('discord-player-youtubei');
@@ -20,10 +22,26 @@ client.commands = new Collection();
 // ---------- Saare commands folder se auto-load karo ----------
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter((f) => f.endsWith('.js'));
+const commandsJSON = [];
 for (const file of commandFiles) {
   const command = require(path.join(commandsPath, file));
   client.commands.set(command.data.name, command);
+  commandsJSON.push(command.data.toJSON());
 }
+// ---------- Startup pe automatically slash commands register karo ----------
+(async () => {
+  try {
+    const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
+    console.log(`🔄 ${commandsJSON.length} slash commands deploy ho rahe hain...`);
+    const route = process.env.GUILD_ID
+      ? Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID)
+      : Routes.applicationCommands(process.env.CLIENT_ID);
+    await rest.put(route, { body: commandsJSON });
+    console.log('✅ Sab commands deploy ho gaye!');
+  } catch (err) {
+    console.error('❌ Commands deploy karte waqt error aaya:', err);
+  }
+})();
 // ---------- Player Setup ----------
 const player = new Player(client);
 (async () => {
