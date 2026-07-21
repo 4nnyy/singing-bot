@@ -1,0 +1,24 @@
+{
+  "name": "annysing-bot",
+  "version": "1.0.0",
+  "description": "AnnySing - Premium high quality Discord music bot with YouTube link/search play, autoplay & audio filters",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "discord-player": "^7.2.0",
+    "@discord-player/extractor": "^7.2.0",
+    "discord-player-youtubei": "^2.0.0",
+    "mediaplex": "latest",
+    "sodium-native": "latest",
+    "ffmpeg-static": "^5.2.0",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
