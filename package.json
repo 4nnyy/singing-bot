@@ -16,7 +16,8 @@
     "mediaplex": "latest",
     "sodium-native": "latest",
     "ffmpeg-static": "^5.2.0",
-    "dotenv": "^16.4.5"
+    "dotenv": "^16.4.5",
+    "youtube-dl-exec": "^3.0.0"
   },
   "engines": {
     "node": ">=20.0.0"
